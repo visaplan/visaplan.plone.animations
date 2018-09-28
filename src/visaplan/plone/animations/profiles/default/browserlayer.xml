@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layers>
+  <layer
+      name="visaplan.plone.animations"
+      interface="visaplan.plone.animations.interfaces.IVisaplanPloneAnimationsLayer"
+      />
+</layers>

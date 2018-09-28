@@ -1,0 +1,6 @@
+[report]
+include =
+    src/visaplan/*
+omit =
+    */test*
+    */upgrades/*

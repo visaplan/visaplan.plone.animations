@@ -13,6 +13,7 @@ htmlcov/
 include/
 lib/
 local/
+man/
 parts/
 src/*
 test.plone_addon/

@@ -6,7 +6,8 @@
 visaplan.plone.animations
 =========================
 
-Tell me what your product does
+A dexterity-based content type for animations.
+
 
 Features
 --------
@@ -18,21 +19,16 @@ Examples
 --------
 
 This add-on can be seen in action at the following sites:
+
 - Is there a page on the internet where everybody can see the features?
+- https://www.unitracc.de
+- https://www.unitracc.com
 
 
 Documentation
 -------------
 
-Full documentation for end users can be found in the "docs" folder, and is also available online at http://docs.plone.org/foo/bar
-
-
-Translations
-------------
-
-This product has been translated into
-
-- Klingon (thanks, K'Plai)
+Sorry, we don't have real user documentation yet.
 
 
 Installation
@@ -54,19 +50,20 @@ and then running ``bin/buildout``
 Contribute
 ----------
 
-- Issue Tracker: https://github.com/collective/visaplan.plone.animations/issues
-- Source Code: https://github.com/collective/visaplan.plone.animations
-- Documentation: https://docs.plone.org/foo/bar
+- Issue Tracker: https://github.com/visaplan/visaplan.plone.animations/issues
+- Source Code: https://github.com/visaplan/visaplan.plone.animations
 
 
 Support
 -------
 
-If you are having issues, please let us know.
-We have a mailing list located at: project@example.com
+If you are having issues, please let us know;
+please use the issue tracker mentioned above.
 
 
 License
 -------
 
 The project is licensed under the GPLv2.
+
+.. vim: tw=79 cc=+1 sw=4 sts=4 si et

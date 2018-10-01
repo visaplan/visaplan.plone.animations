@@ -1,3 +1,5 @@
-=========================visaplan.plone.animations
 =========================
+visaplan.plone.animations
+=========================
+
 User documentation

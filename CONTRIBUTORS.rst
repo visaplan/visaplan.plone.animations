@@ -1,4 +1,4 @@
 Contributors
 ============
 
-- Tobias Herp, visaplan.com
+- Tobias Herp, tobias.herp@visaplan.com

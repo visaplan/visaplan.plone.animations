@@ -17,6 +17,7 @@ parts/
 src/*
 test.plone_addon/
 var/
+.svn/
 # files
 .installed.cfg
 .mr.developer.cfg
@@ -34,3 +35,8 @@ report.html
 !.gitkeep
 !.travis.yml
 !src/visaplan
+# svn-based scripting
+update-module
+scripts/
+init
+init.vim

@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.0.dev1 (unreleased)
+0.1.dev1 (unreleased)
 ---------------------
 
 - Initial release.

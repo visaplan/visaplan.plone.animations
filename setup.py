@@ -210,7 +210,7 @@ setup_kwargs = dict(
         # ... from bobtemplates.Plone:
         'plone.api>=1.8.4',
         'Products.GenericSetup>=1.8.2',
-        'plone.app.dexterity<=2.1.1',
+        # 'plone.app.dexterity<=2.1.1',
         'plone.app.referenceablebehavior',
         'plone.app.relationfield',
         'plone.app.lockingbehavior',

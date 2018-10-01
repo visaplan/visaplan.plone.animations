@@ -27,6 +27,7 @@ log.html
 output.xml
 pip-selfcheck.json
 report.html
+VERSION_SUFFIX
 .vscode/
 # excludes
 !.coveragerc
@@ -41,3 +42,4 @@ update-module
 scripts/
 init
 init.vim
+auto.msg

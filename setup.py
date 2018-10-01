@@ -206,6 +206,7 @@ setup_kwargs = dict(
     install_requires=[
         'setuptools',
         # -*- Extra requirements: -*-
+        'plone.app.dexterity',
         # ... from bobtemplates.Plone:
         'plone.api>=1.8.4',
         'Products.GenericSetup>=1.8.2',

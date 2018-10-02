@@ -7,7 +7,7 @@
   <!-- Basic properties -->
   <property
       i18n:translate=""
-      name="title">Animation</property>
+      name="title">Folderish Animation</property>
   <property
       i18n:translate=""
       name="description">A folderish animation type which *contains* auxiliary files</property>
@@ -21,10 +21,7 @@
   <property name="global_allow">True</property>
   <property name="filter_content_types">True</property>
   <property name="allowed_content_types">
-  <!--
-    <element value="Document" />
     <element value="File" />
-  -->
   </property>
   <!-- Schema, class and security -->
   <property name="add_permission">visaplan.plone.animations.AddAnimation</property>

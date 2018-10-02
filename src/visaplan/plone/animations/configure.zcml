@@ -1,5 +1,6 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     xmlns:i18n="http://namespaces.zope.org/i18n"
     xmlns:plone="http://namespaces.plone.org/plone"
@@ -43,5 +44,24 @@
       />
 
   <!-- -*- extra stuff goes here -*- -->
+    <browser:resourceDirectory
+             name="visaplan.plone.animations"
+             directory="resource" />
+
+    <browser:page
+	name="view"
+	for="visaplan.plone.animations.content.animation.IAnimation"
+	class="visaplan.plone.animations.content.animation.AnimationView"
+	template="templates/animation_view.pt"
+	permission="zope2.View"
+	/>
+
+    <browser:page
+	name="embed"
+	for="visaplan.plone.animations.content.animation.IAnimation"
+	class="visaplan.plone.animations.content.animation.AnimationView"
+	template="templates/animation_embed.pt"
+	permission="zope2.View"
+	/>
 
 </configure>

@@ -50,16 +50,16 @@
 
     <browser:page
 	name="view"
-	for="visaplan.plone.animations.content.animation.IAnimation"
-	class="visaplan.plone.animations.content.animation.AnimationView"
+	for="visaplan.plone.animations.content.folderish_animation.IFolderishAnimation"
+	class="visaplan.plone.animations.content.folderish_animation.FolderishAnimationView"
 	template="templates/animation_view.pt"
 	permission="zope2.View"
 	/>
 
     <browser:page
 	name="embed"
-	for="visaplan.plone.animations.content.animation.IAnimation"
-	class="visaplan.plone.animations.content.animation.AnimationView"
+	for="visaplan.plone.animations.content.folderish_animation.IFolderishAnimation"
+	class="visaplan.plone.animations.content.folderish_animation.FolderishAnimationView"
 	template="templates/animation_embed.pt"
 	permission="zope2.View"
 	/>

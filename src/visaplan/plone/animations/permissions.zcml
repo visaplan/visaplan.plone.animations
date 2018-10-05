@@ -7,11 +7,10 @@
   <!-- -*- extra stuff goes here -*- -->
 
     <permission
-        id="visaplan.plone.animations.AddAnimation"
-        title="visaplan.plone.animations: Add Animation"
+        id="visaplan.plone.animations.AddFolderishAnimation"
+        title="visaplan.plone.animations: Add FolderishAnimation"
     />
 
-        
 
   </configure>
 

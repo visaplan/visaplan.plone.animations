@@ -22,6 +22,7 @@
   <property name="filter_content_types">True</property>
   <property name="allowed_content_types">
     <element value="File" />
+    <element value="Image" />
   </property>
   <!-- Schema, class and security -->
   <property name="add_permission">visaplan.plone.animations.AddAnimation</property>
@@ -41,11 +42,12 @@
     <element value="plone.app.dexterity.behaviors.metadata.ICategorization"/>
     <element value="plone.app.dexterity.behaviors.metadata.IBasic"/>
     <element value="plone.app.referenceablebehavior.referenceable.IReferenceable" />
-    <!--<element value="plone.app.contenttypes.behaviors.leadimage.ILeadImage"/>-->
+    <element value="plone.app.contenttypes.behaviors.leadimage.ILeadImage"/>
     <!--<element value="plone.app.relationfield.behavior.IRelatedItems"/>-->
     <!--<element value="plone.app.versioningbehavior.behaviors.IVersionable" />-->
     <!--<element value="plone.app.contenttypes.behaviors.tableofcontents.ITableOfContents"/>-->
     <!--<element value="plone.app.contenttypes.behaviors.richtext.IRichText"/>-->
+    <element value="visaplan.plone.animations.content.animation.IAnimation" />
   </property>
 
   <!-- View information -->

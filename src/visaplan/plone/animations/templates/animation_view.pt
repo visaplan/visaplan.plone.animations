@@ -1,8 +1,7 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+<html 
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-      lang="en"
       metal:use-macro="context/main_template/macros/master"
       i18n:domain="example.conference">
 <body>
@@ -15,18 +14,6 @@
 
         <h1 class="documentFirstHeading" tal:content="context/title" />
 
-        <div class="discreet"
-             tal:on-error="string:Nix start/ends">
-            <tal:block condition="context/start">
-                <span i18n:translate="label_from">From:</span>
-                <span tal:content="python:context.start.strftime('%x %X')" />
-            </tal:block>
-            <tal:block condition="context/end">
-                <span i18n:translate="label_to">To:</span>
-                <span tal:content="python:context.end.strftime('%x %X')" />
-            </tal:block>
-        </div>
-
         <div tal:replace="structure provider:plone.belowcontenttitle" />
 
         <p class="documentDescription" tal:content="context/description" />
@@ -35,7 +22,7 @@
 
         <h2 i18n:translate="">Contained files</h2>
         <ul tal:define="names view/file_names">
-	    <li tal:repeat="name names">
+            <li tal:repeat="name names">
             <a tal:content="name"
                tal:attributes="href name"
                href="datei.js">
@@ -43,12 +30,18 @@
             </a>
             </li>
         </ul>
-	<tal:scripts repeat="elem view/file_elements">
+        <tal:scripts repeat="elem view/file_elements">
         <script type="text/javascript" src="scriptfile.js"
                 tal:replace="structure elem"></script>
         </tal:scripts>
+        <iframe src="./embed"
+                tal:define="dimensions view/dimensions"
+                tal:attributes="height dimensions/height;
+                                width  dimensions/width;
+                                "></iframe>
 
-        <div tal:replace="structure provider:plone.belowcontentbody" />
+        <div tal:replace="structure provider:plone.belowcontentbody"
+             tal:condition="python:0"/>
 
     </tal:main-macro>
 </metal:main>

@@ -15,12 +15,12 @@ from time import time
 from visaplan.tools.debug import pp
 from pdb import set_trace
 from logging import getLogger
-logger = getLogger(__package__+'.Animation')
+logger = getLogger(__package__+'.FolderishAnimation')
 from visaplan.plone.animations import _
 
 
-class IAnimation(model.Schema):
-    """ Marker interface for Animation
+class IFolderishAnimation(model.Schema):
+    """ Marker interface for FolderishAnimation
     """
     model.fieldset(
         u'dimensions',
@@ -41,17 +41,17 @@ class IAnimation(model.Schema):
         required=True,
         description=_(u"The width needed for a reasonable view of the animation"))
 
-alsoProvides(IAnimation, IFormFieldProvider)
+alsoProvides(IFolderishAnimation, IFormFieldProvider)
 
 
-@implementer(IAnimation)
-class Animation(Container):
+@implementer(IFolderishAnimation)
+class FolderishAnimation(Container):
     """
-    Folderish Animation type
+    Folderish animation type
     """
 
 
-class AnimationView(BrowserView):
+class FolderishAnimationView(BrowserView):
     # ../templates/animation_view.pt
 
     def file_elements(self):
@@ -99,13 +99,13 @@ class AnimationView(BrowserView):
 
     def dimensions(self):
         """
-        xxx
+        Return the given dimensions in a dict
         """
         context = aq_inner(self.context)
         field = context.Schema()
         res = {
-            'height': 720,  # field['height'],
-            'width':  1280, # field['width'],
+            'height': field['height'],
+            'width':  field['width'],
             }
         res['style'] = ';'.join(['%s: %dpx' % tup
                                  for tup in sorted(res.items())

@@ -99,13 +99,13 @@ class AnimationView(BrowserView):
 
     def dimensions(self):
         """
-        xxx
+        Return the given dimensions in a dict
         """
         context = aq_inner(self.context)
         field = context.Schema()
         res = {
-            'height': 720,  # field['height'],
-            'width':  1280, # field['width'],
+            'height': field['height'],
+            'width':  field['width'],
             }
         res['style'] = ';'.join(['%s: %dpx' % tup
                                  for tup in sorted(res.items())

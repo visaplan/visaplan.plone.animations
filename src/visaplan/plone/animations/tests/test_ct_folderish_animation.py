@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from visaplan.plone.animations.content.animation import IAnimation  # NOQA E501
+from visaplan.plone.animations.content.folderish_animation import IFolderishAnimation  # NOQA E501
 from visaplan.plone.animations.testing import VISAPLAN_PLONE_ANIMATIONS_INTEGRATION_TESTING  # noqa
 from plone import api
 from plone.api.exc import InvalidParameterError
@@ -19,7 +19,7 @@ except ImportError:
     from plone.dexterity.utils import portalTypeToSchemaName
 
 
-class AnimationIntegrationTest(unittest.TestCase):
+class FolderishAnimationIntegrationTest(unittest.TestCase):
 
     layer = VISAPLAN_PLONE_ANIMATIONS_INTEGRATION_TESTING
 
@@ -28,60 +28,60 @@ class AnimationIntegrationTest(unittest.TestCase):
         self.portal = self.layer['portal']
         setRoles(self.portal, TEST_USER_ID, ['Manager'])
 
-    def test_ct_animation_schema(self):
-        fti = queryUtility(IDexterityFTI, name='Animation')
+    def test_ct_folderish_animation_schema(self):
+        fti = queryUtility(IDexterityFTI, name='FolderishAnimation')
         schema = fti.lookupSchema()
-        schema_name = portalTypeToSchemaName('Animation')
+        schema_name = portalTypeToSchemaName('FolderishAnimation')
         self.assertEqual(schema_name, schema.getName())
 
-    def test_ct_animation_fti(self):
-        fti = queryUtility(IDexterityFTI, name='Animation')
+    def test_ct_folderish_animation_fti(self):
+        fti = queryUtility(IDexterityFTI, name='FolderishAnimation')
         self.assertTrue(fti)
 
-    def test_ct_animation_factory(self):
-        fti = queryUtility(IDexterityFTI, name='Animation')
+    def test_ct_folderish_animation_factory(self):
+        fti = queryUtility(IDexterityFTI, name='FolderishAnimation')
         factory = fti.factory
         obj = createObject(factory)
 
         self.assertTrue(
-            IAnimation.providedBy(obj),
-            u'IAnimation not provided by {0}!'.format(
+            IFolderishAnimation.providedBy(obj),
+            u'IFolderishAnimation not provided by {0}!'.format(
                 obj,
             ),
         )
 
-    def test_ct_animation_adding(self):
+    def test_ct_folderish_animation_adding(self):
         setRoles(self.portal, TEST_USER_ID, ['Contributor'])
         obj = api.content.create(
             container=self.portal,
-            type='Animation',
-            id='animation',
+            type='FolderishAnimation',
+            id='folderish_animation',
         )
 
         self.assertTrue(
-            IAnimation.providedBy(obj),
-            u'IAnimation not provided by {0}!'.format(
+            IFolderishAnimation.providedBy(obj),
+            u'IFolderishAnimation not provided by {0}!'.format(
                 obj.id,
             ),
         )
 
-    def test_ct_animation_globally_addable(self):
+    def test_ct_folderish_animation_globally_addable(self):
         setRoles(self.portal, TEST_USER_ID, ['Contributor'])
-        fti = queryUtility(IDexterityFTI, name='Animation')
+        fti = queryUtility(IDexterityFTI, name='FolderishAnimation')
         self.assertTrue(
             fti.global_allow,
             u'{0} is not globally addable!'.format(fti.id)
         )
 
-    def test_ct_animation_filter_content_type_true(self):
+    def test_ct_folderish_animation_filter_content_type_true(self):
         setRoles(self.portal, TEST_USER_ID, ['Contributor'])
-        fti = queryUtility(IDexterityFTI, name='Animation')
+        fti = queryUtility(IDexterityFTI, name='FolderishAnimation')
         portal_types = self.portal.portal_types
         parent_id = portal_types.constructContent(
             fti.id,
             self.portal,
-            'animation_id',
-            title='Animation container',
+            'folderish_animation_id',
+            title='FolderishAnimation container',
          )
         self.parent = self.portal[parent_id]
         with self.assertRaises(InvalidParameterError):

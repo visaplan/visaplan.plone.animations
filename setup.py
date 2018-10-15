@@ -117,6 +117,8 @@ setup_kwargs = dict(
         'setuptools',
         # -*- Extra requirements: -*-
         'plone.app.dexterity',
+        'visaplan.plone.interfaces',  # IHeightAndWidth
+        'visaplan.tools',  # .debug.pp
         # ... from bobtemplates.Plone:
         'plone.api>=1.8.4',
         'Products.GenericSetup>=1.8.2',

@@ -2,8 +2,8 @@
 from plone.dexterity.content import Container
 from plone.supermodel import model
 from zope.interface import implementer
-from zope.interface import alsoProvides
 from zope import schema
+from visaplan.plone.interfaces import IHeightAndWidth
 from plone.autoform.interfaces import IFormFieldProvider
 
 from Acquisition import aq_inner
@@ -15,36 +15,17 @@ from time import time
 from visaplan.tools.debug import pp
 from pdb import set_trace
 from logging import getLogger
-logger = getLogger(__package__+'.FolderishAnimation')
+logger = getLogger(__package__+':FolderishAnimation')
 from visaplan.plone.animations import _
 
 
 class IFolderishAnimation(model.Schema):
     """ Marker interface for FolderishAnimation
     """
-    model.fieldset(
-        u'dimensions',
-        label=_(u"Dimensions"),
-        fields=['height',
-                'width'
-                ])
-
-    height = schema.Int(
-        title=_(u'Height'),
-        default=720,
-        required=True,
-        description=_(u"The height needed for a reasonable view of the animation"))
-
-    width = schema.Int(
-        title=_(u'Width'),
-        default=1280,
-        required=True,
-        description=_(u"The width needed for a reasonable view of the animation"))
-
-alsoProvides(IFolderishAnimation, IFormFieldProvider)
+    # model/fields moved to --> IHeightAndWidth
 
 
-@implementer(IFolderishAnimation)
+@implementer(IFolderishAnimation, IHeightAndWidth)
 class FolderishAnimation(Container):
     """
     Folderish animation type

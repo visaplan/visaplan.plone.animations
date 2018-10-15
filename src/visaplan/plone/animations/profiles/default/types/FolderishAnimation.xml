@@ -42,7 +42,20 @@
     <element value="plone.app.dexterity.behaviors.metadata.ICategorization"/>
     <element value="plone.app.dexterity.behaviors.metadata.IBasic"/>
     <element value="plone.app.referenceablebehavior.referenceable.IReferenceable" />
+    <!-- not yet usable; we still have Archetypes-based content!
+         see https://pypi.org/project/plone.app.contenttypes/#what-happens-to-existing-content
     <element value="plone.app.contenttypes.behaviors.leadimage.ILeadImage"/>
+    -->
+    <!-- height, width: -->
+    <element value="visaplan.plone.interfaces.IHeightAndWidth"/>
+    <!-- caption, legend: -->
+    <element value="visaplan.plone.interfaces.ICaptionAndLegend"/>
+    <!-- excludeFromSearch; similar to excludeFromNav: -->
+    <element value="visaplan.plone.interfaces.IExcludeFromSearch"/>
+    <!-- code; roughly like ICategorization, but hierarchical.
+         Note - this interface might move to another package!
+      -->
+    <element value="visaplan.plone.interfaces.IHierarchicalBuzzword"/>
     <!--<element value="plone.app.relationfield.behavior.IRelatedItems"/>-->
     <!--<element value="plone.app.versioningbehavior.behaviors.IVersionable" />-->
     <!--<element value="plone.app.contenttypes.behaviors.tableofcontents.ITableOfContents"/>-->

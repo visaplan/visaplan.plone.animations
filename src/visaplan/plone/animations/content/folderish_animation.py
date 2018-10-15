@@ -82,8 +82,12 @@ class FolderishAnimationView(BrowserView):
         """
         Return the given dimensions in a dict
         """
+        assert isinstance(self, FolderishAnimationView)
         context = aq_inner(self.context)
+        assert isinstance(context, FolderishAnimation)
+        # set_trace()
         field = context.Schema()
+        # pp((('self:', self), ('context:', context), ('field:', field)))
         res = {
             'height': field['height'],
             'width':  field['width'],

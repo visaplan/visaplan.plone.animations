@@ -47,15 +47,15 @@
     <element value="plone.app.contenttypes.behaviors.leadimage.ILeadImage"/>
     -->
     <!-- height, width: -->
-    <element value="visaplan.plone.interfaces.IHeightAndWidth"/>
+    <element value="visaplan.plone.interfaces.behaviors.IHeightAndWidth"/>
     <!-- caption, legend: -->
-    <element value="visaplan.plone.interfaces.ICaptionAndLegend"/>
+    <element value="visaplan.plone.interfaces.behaviors.ICaptionAndLegend"/>
     <!-- excludeFromSearch; similar to excludeFromNav: -->
-    <element value="visaplan.plone.interfaces.IExcludeFromSearch"/>
+    <element value="visaplan.plone.interfaces.behaviors.IExcludeFromSearch"/>
     <!-- code; roughly like ICategorization, but hierarchical.
          Note - this interface might move to another package!
       -->
-    <element value="visaplan.plone.interfaces.IHierarchicalBuzzword"/>
+    <element value="visaplan.plone.interfaces.behaviors.IHierarchicalBuzzword"/>
     <!--<element value="plone.app.relationfield.behavior.IRelatedItems"/>-->
     <!--<element value="plone.app.versioningbehavior.behaviors.IVersionable" />-->
     <!--<element value="plone.app.contenttypes.behaviors.tableofcontents.ITableOfContents"/>-->

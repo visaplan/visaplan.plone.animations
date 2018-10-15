@@ -117,13 +117,13 @@ setup_kwargs = dict(
         'setuptools',
         # -*- Extra requirements: -*-
         'plone.app.dexterity',
-        'visaplan.plone.interfaces',  # IHeightAndWidth
+        'visaplan.plone.interfaces>=1.0.dev3',  # IHeightAndWidth
         'visaplan.tools',  # .debug.pp
         # ... from bobtemplates.Plone:
         'plone.api>=1.8.4',
         'Products.GenericSetup>=1.8.2',
-        # 'plone.app.dexterity<=2.1.1',
-        'plone.app.referenceablebehavior',
+        # 'plone.app.dexterity<=2.1.1',  # why the version constraint?!
+        'plone.app.referenceablebehavior',  # IReferenceable
         'plone.app.relationfield',
         'plone.app.lockingbehavior',
         'plone.schema',

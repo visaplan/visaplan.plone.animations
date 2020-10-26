@@ -1,14 +1,17 @@
-<html 
-      xmlns:tal="http://xml.zope.org/namespaces/tal"
+<tal:req tal:define="
+set python:request.set;
+dummy python:set('span_class', 'col-md-9');
+"><html xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
-      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       metal:use-macro="context/main_template/macros/master"
-      i18n:domain="example.conference">
+      >
 <body>
 
 <metal:main fill-slot="main">
     <tal:main-macro metal:define-macro="main"
-        tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime">
+        tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+all_values view/all_values;
+">
 
         <div tal:replace="structure provider:plone.abovecontenttitle" />
 
@@ -20,25 +23,11 @@
 
         <div tal:replace="structure provider:plone.abovecontentbody" />
 
-        <h2 i18n:translate="">Contained files</h2>
-        <ul tal:define="names view/file_names">
-            <li tal:repeat="name names">
-            <a tal:content="name"
-               tal:attributes="href name"
-               href="datei.js">
-            datei.js
-            </a>
-            </li>
-        </ul>
-        <tal:scripts repeat="elem view/file_elements">
-        <script type="text/javascript" src="scriptfile.js"
-                tal:replace="structure elem"></script>
-        </tal:scripts>
-        <iframe src="./embed"
-                tal:define="dimensions view/dimensions"
-                tal:attributes="height dimensions/height;
-                                width  dimensions/width;
-                                "></iframe>
+        <a href="onlyme" target="_blank"
+           title="Open a new window to start the animation"
+           i18n:attributes="title"><img
+           tal:replace="structure all_values/preview_image_tag"
+           /></a>
 
         <div tal:replace="structure provider:plone.belowcontentbody"
              tal:condition="python:0"/>
@@ -47,4 +36,4 @@
 </metal:main>
 
 </body>
-</html>
+</html></tal:req>

@@ -46,16 +46,21 @@
          see https://pypi.org/project/plone.app.contenttypes/#what-happens-to-existing-content
     <element value="plone.app.contenttypes.behaviors.leadimage.ILeadImage"/>
     -->
+    <!-- type_nr: -->
+    <element value="visaplan.plone.animations.interfaces.IFolderishAnimation"/>
     <!-- height, width: -->
-    <element value="visaplan.plone.interfaces.behaviors.IHeightAndWidth"/>
+    <element value="visaplan.plone.behaviors.interfaces.IHeightAndWidth"/>
     <!-- caption, legend: -->
-    <element value="visaplan.plone.interfaces.behaviors.ICaptionAndLegend"/>
+    <element value="visaplan.plone.behaviors.interfaces.ICaptionAndLegend"/>
     <!-- excludeFromSearch; similar to excludeFromNav: -->
-    <element value="visaplan.plone.interfaces.behaviors.IExcludeFromSearch"/>
+    <element value="visaplan.plone.behaviors.interfaces.IExcludeFromSearch"/>
     <!-- code; roughly like ICategorization, but hierarchical.
          Note - this interface might move to another package!
       -->
-    <element value="visaplan.plone.interfaces.behaviors.IHierarchicalBuzzword"/>
+    <element value="visaplan.plone.behaviors.interfaces.IHierarchicalBuzzword"/>
+    <!-- image: -->
+    <element value="visaplan.plone.behaviors.interfaces.IPreviewImage"/>
+    <element value="plone.namedfile.interfaces.IImageScaleTraversable"/>
     <!--<element value="plone.app.relationfield.behavior.IRelatedItems"/>-->
     <!--<element value="plone.app.versioningbehavior.behaviors.IVersionable" />-->
     <!--<element value="plone.app.contenttypes.behaviors.tableofcontents.ITableOfContents"/>-->

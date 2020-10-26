@@ -1,0 +1,85 @@
+<!doctype HTML>
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="visaplan.plone.animations"
+      tal:define="
+all_values python:view.all_values();
+type_nr    python:all_values.get('type_nr', 1) or 1;
+dim_style  python:all_values['_calculated']['style'];
+dim_height python:all_values['height'];
+dim_width  python:all_values['width'];
+file_elements python:all_values['file_elements'];
+preload_img python:all_values['preload_img'];
+
+"><tal:comment replace="nothing"><!--
+Funktionsweise:
+
+- Es werden stets zuerst die grundlegenden Skripte eingebunden
+  (noch keine Varianten je nach type_nr)
+- Dann ein Stylesheet, das die Typnummer im Namen trägt;
+  es enthält (bis auf Angaben wie Höhe und Breite, die je nach den Objekteigenschaften
+  in mehreren Elementen konsistent geändern werden sollten, und zwar teils im style-,
+  teils in klassischen height- und width-Attributen) alle Angaben, die im Export als style-Attribute
+  erzeugt wurden.
+- Dann die mitgepackten Dateien (den "Inhalt" des Animationsobjekts); hier ist es auch möglich,
+  durch eine CSS-Datei Stilangaben zu ergänzen oder zu übersteuern.
+  - Javascript-Dateien, deren Namen mit "inline" beginnt, werden nicht mit
+    src-Attributen referenziert, sondern ihr Inhalt "inline" eingefügt.
+    Das ist offenbar nötig :-(
+- Jegliche Javascript-Funktionalität wird durch diese beigepackten Javascript-Dateien realisiert;
+  es wird keine Annahme über die Benennung der Initialisierungsfunktion
+  getroffen und daher diese auch nicht im onload-Attribut, sondern per
+  $(document).ready(...) (jQuery) realisiert.
+
+Folgende Funktionalitäten wurden entfernt:
+- onload-Attribut
+- body[style]
+- allerhand style-Attributwerte außer den Dimensionen (dim_style)
+
+--></tal:comment>
+<head>
+<meta charset="UTF-8">
+<meta name="authoring-tool" content="Adobe_Animate_CC">
+<title tal:content="context/title">
+Titel des Animationsobjekts
+</title>
+<script src="++resource++plone.app.jquery.js"></script>
+<script src="/++resource++visaplan.plone.animations/createjs-2015.11.26.min.js"></script>
+<link rel="stylesheet" type="text/css"
+      href="../resource/type-1.css"
+      tal:attributes="
+href string:/++resource++visaplan.plone.animations/type-${type_nr}.css;
+"/>
+<tal:scripts repeat="elem file_elements"
+><script type="text/javascript" src="scriptfile.js"
+    tal:replace="structure elem"></script></tal:scripts>
+</head>
+<body>
+    <div id="animation_container"
+         class="animation-container"
+         style="background-color:rgba(51, 51, 51, 1.00)"
+         tal:attributes="style dim_style"
+         >
+        <canvas width="1280" height="720"
+                id="canvas"
+                tal:attributes="height dim_height;
+                                width  dim_width;
+                                "></canvas>
+        <div id="dom_overlay_container"
+             class="overlay-container"
+             style="pointer-events:none; overflow:hidden; position: absolute; left: 0px; top: 0px; display: none;"
+             tal:attributes="style dim_style"
+        ></div>
+    </div>
+    <div id="_preload_div_"
+         tal:condition="preload_img"
+         class="animation-preloader"
+         style="position:absolute; top:0; left:0; display: inline-block; text-align: center;"
+         tal:attributes="style dim_style">
+        <span style="display: inline-block; height: 100%; vertical-align: middle;"></span>
+        <img src=""
+             style="vertical-align: middle; max-height: 100%"
+             tal:attributes="src preload_img"/>
+    </div>
+</body>
+</html>

@@ -3,14 +3,13 @@
   xmlns:genericsetup="http://namespaces.zope.org/genericsetup">
 
   <!-- -*- extra stuff goes here -*- -->
-  <!--<genericsetup:upgradeStep
+  <genericsetup:upgradeStep
     source="*"
     destination="1001"
     title="Reload GS profiles"
     description=""
     profile="visaplan.plone.animations:default"
     handler=".upgrades.reload_gs_profile"
-    />-->
-
+    />
 
 </configure>

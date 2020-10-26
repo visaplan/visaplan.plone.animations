@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from visaplan.plone.animations.content.folderish_animation import IFolderishAnimation  # NOQA E501
+from visaplan.plone.animations.interfaces import IFolderishAnimation  # NOQA E501
 from visaplan.plone.animations.testing import VISAPLAN_PLONE_ANIMATIONS_INTEGRATION_TESTING  # noqa
 from plone import api
 from plone.api.exc import InvalidParameterError

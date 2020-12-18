@@ -1,10 +1,17 @@
 # -*- coding: utf-8 -*-
 """Module where all interfaces, events and exceptions live."""
 
-from zope.publisher.interfaces.browser import IDefaultBrowserLayer
-from plone.supermodel import model
-from zope import schema
+# Python compatibility:
+from __future__ import absolute_import
 
+# Zope:
+from zope import schema
+from zope.publisher.interfaces.browser import IDefaultBrowserLayer
+
+# Plone:
+from plone.supermodel import model
+
+# Local imports:
 from visaplan.plone.animations import _
 
 

@@ -1,21 +1,31 @@
 # -*- coding: utf-8 -*-
-from visaplan.plone.animations.interfaces import IFolderishAnimation  # NOQA E501
-from visaplan.plone.animations.testing import VISAPLAN_PLONE_ANIMATIONS_INTEGRATION_TESTING  # noqa
-from plone import api
-from plone.api.exc import InvalidParameterError
-from plone.app.testing import setRoles
-from plone.app.testing import TEST_USER_ID
-from plone.dexterity.interfaces import IDexterityFTI
-from zope.component import createObject
-from zope.component import queryUtility
+# Python compatibility:
+from __future__ import absolute_import
 
+# Standard library:
 import unittest
 
+# Zope:
+from zope.component import createObject, queryUtility
+
+# Plone:
+from plone import api
+from plone.api.exc import InvalidParameterError
+from plone.app.testing import TEST_USER_ID, setRoles
+from plone.dexterity.interfaces import IDexterityFTI
+
+# Local imports:
+from visaplan.plone.animations.interfaces import \
+    IFolderishAnimation  # NOQA E501
+from visaplan.plone.animations.testing import \
+    VISAPLAN_PLONE_ANIMATIONS_INTEGRATION_TESTING  # noqa
 
 try:
+    # Plone:
     from plone.dexterity.schema import portalTypeToSchemaName
 except ImportError:
     # Plone < 5
+    # Plone:
     from plone.dexterity.utils import portalTypeToSchemaName
 
 

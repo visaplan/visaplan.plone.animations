@@ -1,16 +1,25 @@
 # -*- coding: utf-8 -*-
+# Python compatibility:
+from __future__ import absolute_import
+
+# Standard library:
 import warnings
+
 with warnings.catch_warnings():
     warnings.simplefilter('ignore', ImportWarning)
 
     # from plone.app.robotframework.testing import REMOTE_LIBRARY_BUNDLE_FIXTURE
-    from plone.app.testing import applyProfile
-    from plone.app.testing import FunctionalTesting
-    from plone.app.testing import IntegrationTesting
-    from plone.app.testing import PLONE_FIXTURE
-    from plone.app.testing import PloneSandboxLayer
+    # Plone:
+    from plone.app.testing import (
+        PLONE_FIXTURE,
+        FunctionalTesting,
+        IntegrationTesting,
+        PloneSandboxLayer,
+        applyProfile,
+        )
     from plone.testing import z2
 
+# Local imports:
 import visaplan.plone.animations
 
 
@@ -22,6 +31,7 @@ class VisaplanPloneAnimationsLayer(PloneSandboxLayer):
         # Load any other ZCML that is required for your tests.
         # The z3c.autoinclude feature is disabled in the Plone fixture base
         # layer.
+        # Plone:
         import plone.app.dexterity
         self.loadZCML(package=plone.app.dexterity)
         self.loadZCML(package=visaplan.plone.animations)

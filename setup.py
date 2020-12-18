@@ -1,17 +1,22 @@
 # -*- coding: utf-8 -*- vim: et ts=8 sw=4 sts=4 si tw=79 cc=+1
 """Installer for the visaplan.plone.animations package."""
-from __future__ import absolute_import
-from __future__ import print_function
+# Python compatibility:
+from __future__ import absolute_import, print_function
 
-from setuptools import find_packages
-from setuptools import setup
-from os.path import isfile
+# Setup tools:
+from setuptools import find_packages, setup
+
+# Standard library:
+import os
 # ---------------------------------------- [ destination locking ... [
-import sys, os
+import sys
+from os.path import isfile
+
 try:  # Python 3:
+    # Standard library:
     from configparser import ConfigParser
 except ImportError:
-    # Python 2:
+    # Standard library (Python 2):
     from ConfigParser import ConfigParser
 # ---------------------------------------- ] ... destination locking ]
 
@@ -74,8 +79,8 @@ VERSION = read_version('VERSION',
 
 
 # ---------------------------------------- [ destination locking ... [
+COMMANDS_WATCHED = ('register', 'upload')
 def inject_repository_url(server):
-    COMMANDS_WATCHED = ('register', 'upload')
     changed = False
 
     for command in COMMANDS_WATCHED:
@@ -150,8 +155,11 @@ def check_server(server):
 PYPI_KEY = 'visaplan'
 PYPI_URL = 'https://pypi.visaplan.com'
 
-check_repository(PYPI_KEY)
-# check_server(PYPI_URL)
+for command in COMMANDS_WATCHED:
+    if command in sys.argv:
+        check_repository(PYPI_KEY)
+        # check_server(PYPI_URL)
+        break
 # ---------------------------------------- ] ... destination locking ]
 
 
@@ -232,6 +240,7 @@ setup_kwargs = dict(
         "Environment :: Web Environment",
         "Framework :: Plone",
         "Framework :: Plone :: 4.3",
+        'Framework :: Zope2',
         "Programming Language :: Python",
         "Programming Language :: Python :: 2.7",
         "Intended Audience :: Developers",
@@ -254,7 +263,8 @@ setup_kwargs = dict(
     zip_safe=False,
     install_requires=[
         'setuptools',
-        'plone.dexterity', 
+        'six',
+        'plone.dexterity',
         # -*- Extra requirements: -*-
         'visaplan.plone.ajaxnavigation',
         'visaplan.plone.behaviors',
@@ -283,10 +293,10 @@ setup_kwargs = dict(
             # imported by test code:
             'plone.app.dexterity',
             'Pillow',
-            # plone.app.robotframework 1.2.0 requires plone.testing 4.0.11; 
+            # plone.app.robotframework 1.2.0 requires plone.testing 4.0.11;
             # plone.app.robotframework 1.3+ drops Plone 4.3 compatibility:
             'plone.testing',
-            # currently disabled because of import problems: 
+            # currently disabled because of import problems:
             # 'plone.app.robotframework[debug]',
             "plone.api",
         ],

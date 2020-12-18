@@ -1,4 +1,8 @@
 # -*- coding: utf-8 -*-
+# Python compatibility:
+from __future__ import absolute_import
+
+# Plone:
 from plone.app.upgrade.utils import loadMigrationProfile
 
 

@@ -10,6 +10,16 @@ Changelog
 [tobiasherp]
 
 
+1.0.4 (2020-12-16)
+------------------
+
+Improvements:
+
+- Made FolderishAnimations clickable even if lacking a preview image
+
+[tobiasherp]
+
+
 1.0.3 (2020-03-05)
 ------------------
 

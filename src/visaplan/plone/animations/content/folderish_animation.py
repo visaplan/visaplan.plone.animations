@@ -1,34 +1,51 @@
 # -*- coding: utf-8 -*-
-from plone.dexterity.content import Container
-from zope import schema
-from zope.interface import implementer
-from visaplan.plone.behaviors.interfaces import (IHeightAndWidth,
-        ICaptionAndLegend, IExcludeFromSearch, IHierarchicalBuzzword,
-        IPreviewImage,
-        )
-from visaplan.plone.animations.interfaces import IFolderishAnimation
-from plone.autoform.interfaces import IFormFieldProvider
-from zope.interface.interfaces import IMethod
-from plone.dexterity.interfaces import IDexterityFTI
-from zope.schema import getFieldsInOrder
-from plone.behavior.interfaces import IBehaviorAssignable
+# Python compatibility:
+from __future__ import absolute_import
 
-from zope.component import getUtility
-from zope.component import getMultiAdapter
+from six.moves import range
 
-from Acquisition import aq_inner
-# from visaplan.plone.animations.interfaces import ...
-from plone import api
-from Products.Five import BrowserView
+# Standard library:
 from time import time
+from cgi import escape as cgi_escape
 
+# Zope:
+from Acquisition import aq_inner
+from Products.Five import BrowserView
+from zope import schema
+from zope.component import getMultiAdapter, getUtility
+from zope.interface import implementer
+from zope.interface.interfaces import IMethod
+from zope.schema import getFieldsInOrder
+
+# Plone:
+from plone import api
+from plone.autoform.interfaces import IFormFieldProvider
+from plone.behavior.interfaces import IBehaviorAssignable
+from plone.dexterity.content import Container
+from plone.dexterity.interfaces import IDexterityFTI
+
+# visaplan:
+from visaplan.plone.behaviors.interfaces import (
+    ICaptionAndLegend,
+    IExcludeFromSearch,
+    IHeightAndWidth,
+    IHierarchicalBuzzword,
+    IPreviewImage,
+    )
 from visaplan.plone.staticthumbnails.mixin import DedicatedThumbnailMixin
 
-from visaplan.tools.debug import pp
-from pdb import set_trace
+# Local imports:
+from ..interfaces import IFolderishAnimation
+
+# Logging / Debugging:
 from logging import getLogger
-logger = getLogger(__package__+':FolderishAnimation')
-from visaplan.plone.animations import _
+from pdb import set_trace
+from visaplan.tools.debug import pp
+
+logger = getLogger('visaplan.plone.animations:FolderishAnimation')
+
+# Local imports:
+from .. import _
 
 __all__ = [  # public interface:
         'FolderishAnimation',          # content class
@@ -244,9 +261,19 @@ class FolderishAnimationView(BrowserView):
             res['preview_image_tag'] = scale.tag(title=None,
                             alt=_('Open a new window to start the animation'))
         else:
-            res['preview_image_tag'] = None
+            res['preview_image_tag'] = self._clickable_text()
             logger.warn('No preview image found for %(context)r', locals())
         return res
+
+    def _clickable_text(self):
+        """
+        The "clickability" is provided by the enclosing <a> element
+        """
+        hint = _('Open a new window to start the animation')
+	title = _('Sorry, no preview image (yet)!')
+        return (u'<span title="' + cgi_escape(title, True) + u'">'
+                + cgi_escape(hint)
+                + u'</span>')
 
 
 class FolderishAnimationAjaxView(FolderishAnimationView):

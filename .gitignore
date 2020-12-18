@@ -103,7 +103,6 @@ env.bak/
 venv.bak/
 
 # VirtualEnv / Virtual Environment
-pyvenv.cfg
 bin/
 Scripts/
 include/

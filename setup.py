@@ -74,8 +74,8 @@ VERSION = read_version('VERSION',
 
 
 # ---------------------------------------- [ destination locking ... [
-COMMANDS_WATCHED = ('register', 'upload')
 def inject_repository_url(server):
+    COMMANDS_WATCHED = ('register', 'upload')
     changed = False
 
     for command in COMMANDS_WATCHED:
@@ -150,11 +150,8 @@ def check_server(server):
 PYPI_KEY = 'visaplan'
 PYPI_URL = 'https://pypi.visaplan.com'
 
-for command in COMMANDS_WATCHED:
-    if command in sys.argv:
-        check_repository(PYPI_KEY)
-        # check_server(PYPI_URL)
-        break
+check_repository(PYPI_KEY)
+# check_server(PYPI_URL)
 # ---------------------------------------- ] ... destination locking ]
 
 
@@ -235,7 +232,6 @@ setup_kwargs = dict(
         "Environment :: Web Environment",
         "Framework :: Plone",
         "Framework :: Plone :: 4.3",
-        'Framework :: Zope2',
         "Programming Language :: Python",
         "Programming Language :: Python :: 2.7",
         "Intended Audience :: Developers",

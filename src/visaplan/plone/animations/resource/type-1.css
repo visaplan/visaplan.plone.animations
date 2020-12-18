@@ -1,0 +1,47 @@
+body {
+    margin: 0;
+}
+
+div.animation-container,
+div#animation_container {
+    background-color: rgba(51, 51, 51, 1.00);
+}
+
+div.animation-container canvas,
+canvas#canvas {
+    background-color: rgba(51, 51, 51, 1.00);
+    display: block;
+    position: absolute;
+}
+
+div.animation-container > .overlay-container,
+div#dom_overlay_container {
+    display: block;
+    overflow: hidden;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    pointer-events: none;
+}
+
+div.animation-preloader,
+div#_preload_div_ {
+    display: inline-block;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    text-align: center;
+}
+
+div.animation-preloader > span,
+div#_preload_div_ > span {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+div.animation-preloader > img,
+div#_preload_div_ > img {
+    vertical-align: middle;
+    max-height: 100%;
+}

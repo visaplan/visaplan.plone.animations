@@ -15,33 +15,12 @@
   <!--<includeDependencies package="." />-->
 
   <include package=".browser" />
+  <include package="visaplan.plone.ajaxnavigation" />
 
   <include file="permissions.zcml" />
 
+  <include file="profiles.zcml" />
   <include file="upgrades.zcml" />
-
-  <genericsetup:registerProfile
-      name="default"
-      title="visaplan.plone.animations"
-      directory="profiles/default"
-      description="Installs the visaplan.plone.animations add-on."
-      provides="Products.GenericSetup.interfaces.EXTENSION"
-      post_handler=".setuphandlers.post_install"
-      />
-
-  <genericsetup:registerProfile
-      name="uninstall"
-      title="visaplan.plone.animations (uninstall)"
-      directory="profiles/uninstall"
-      description="Uninstalls the visaplan.plone.animations add-on."
-      provides="Products.GenericSetup.interfaces.EXTENSION"
-      post_handler=".setuphandlers.uninstall"
-      />
-
-  <utility
-      factory=".setuphandlers.HiddenProfiles"
-      name="visaplan.plone.animations-hiddenprofiles"
-      />
 
   <!-- -*- extra stuff goes here -*- -->
     <browser:resourceDirectory
@@ -49,19 +28,27 @@
              directory="resource" />
 
     <browser:page
-	name="view"
-	for="visaplan.plone.animations.content.animation.IAnimation"
-	class="visaplan.plone.animations.content.animation.AnimationView"
-	template="templates/animation_view.pt"
-	permission="zope2.View"
-	/>
+        name="view"
+        for="visaplan.plone.animations.interfaces.IFolderishAnimation"
+        class="visaplan.plone.animations.content.folderish_animation.FolderishAnimationView"
+        template="templates/animation_view.pt"
+        permission="zope2.View"
+        />
 
     <browser:page
-	name="embed"
-	for="visaplan.plone.animations.content.animation.IAnimation"
-	class="visaplan.plone.animations.content.animation.AnimationView"
-	template="templates/animation_embed.pt"
-	permission="zope2.View"
-	/>
+        name="ajax-nav"
+        for="visaplan.plone.animations.interfaces.IFolderishAnimation"
+        class="visaplan.plone.ajaxnavigation.views.NoAjaxBrowserView"
+        layer="visaplan.plone.animations.interfaces.IVisaplanPloneAnimationsLayer"
+        permission="zope.Public"
+        />
+
+    <browser:page
+        name="onlyme"
+        for="visaplan.plone.animations.interfaces.IFolderishAnimation"
+        class="visaplan.plone.animations.content.folderish_animation.FolderishAnimationAjaxView"
+        template="templates/animation_onlyme.pt"
+        permission="zope2.View"
+        />
 
 </configure>

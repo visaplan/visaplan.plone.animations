@@ -1,6 +1,12 @@
 # -*- coding: utf-8 -*-
-from Products.CMFPlone.interfaces import INonInstallable
+# Python compatibility:
+from __future__ import absolute_import
+
+# Zope:
 from zope.interface import implementer
+
+# Plone:
+from Products.CMFPlone.interfaces import INonInstallable
 
 
 @implementer(INonInstallable)

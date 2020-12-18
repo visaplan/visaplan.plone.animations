@@ -1,0 +1,29 @@
+<configure
+  xmlns="http://namespaces.zope.org/zope"
+  xmlns:genericsetup="http://namespaces.zope.org/genericsetup">
+
+  <!-- -*- extra stuff goes here -*- -->
+  <genericsetup:registerProfile
+      name="default"
+      title="visaplan.plone.animations"
+      directory="profiles/default"
+      description="Installs the visaplan.plone.animations add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      post_handler=".setuphandlers.post_install"
+      />
+
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="visaplan.plone.animations (uninstall)"
+      directory="profiles/uninstall"
+      description="Uninstalls the visaplan.plone.animations add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      post_handler=".setuphandlers.uninstall"
+      />
+
+  <utility
+      factory=".setuphandlers.HiddenProfiles"
+      name="visaplan.plone.animations-hiddenprofiles"
+      />
+
+</configure>

@@ -1,29 +1,31 @@
 # --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
-# Translations catalog template for the visaplan.plone.animations Plone add-on.
+# Deutsche Lokalisierung zu visaplan.plone.animations.
 # Tobias Herp <tobias.herp@visaplan.com>, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: visaplan.plone.animations\n"
 "POT-Creation-Date: 2019-05-16 09:01+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2019-05-16 09:16+0000\n"
+"Last-Translator: Tobias Herp <tobias.herp@visaplan.com>n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
-"Language-Code: en\n"
-"Language-Name: English\n"
+"Language-Code: de\n"
+"Language-Name: German\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: visaplan.plone.animations\n"
 
 #: ../profiles/default/types/FolderishAnimation.xml
 msgid "A folderish animation type which *contains* auxiliary files"
 msgstr ""
+"Ein ordnerartiger Objekttyp für Animationen, die ihre Hilfsdateien enthalten"
 
 #: ../content/folderish_animation.py:35
 msgid "Basic"
 msgstr ""
+"Grundlegend"
 
 #: ../profiles/default/types/FolderishAnimation.xml
 msgid "Edit"
@@ -32,6 +34,7 @@ msgstr ""
 #: ../profiles/default/types/FolderishAnimation.xml
 msgid "FolderishAnimation"
 msgstr ""
+"Animation (ordnerartig)"
 
 #: ../configure.zcml:30
 msgid "Installs the visaplan.plone.animations add-on."
@@ -39,14 +42,19 @@ msgstr ""
 
 msgid "Open a new window to start the animation"
 msgstr ""
+"Ein neues Fenster öffnen, um die Animation auszuführen"
 
 #: ../content/folderish_animation.py:43
 msgid "The implementation of folderish animations might evolve, and some of the improvents might be incompatible to older animation objects."
 msgstr ""
+"Die Implementierung der ordnerartigen Animationen könnte sich "
+"weiterentwickeln, und manche der Verbesserungen könnten mit vorhandenen "
+"Animationsobjekten inkompatibel sein."
 
 #: ../content/folderish_animation.py:40
 msgid "Type number"
 msgstr ""
+"Typnummer"
 
 #: ../configure.zcml:39
 msgid "Uninstalls the visaplan.plone.animations add-on."

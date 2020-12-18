@@ -3,13 +3,12 @@
   <permissions>
   <!-- -*- extra stuff goes here -*- -->
 
-    <permission name="visaplan.plone.animations: Add Animation" acquire="True">
+    <permission name="visaplan.plone.animations: Add FolderishAnimation" acquire="True">
       <role name="Manager"/>
       <role name="Site Administrator"/>
       <role name="Owner"/>
       <role name="Contributor"/>
     </permission>
 
-        
   </permissions>
 </rolemap>

@@ -1,0 +1,41 @@
+body {
+    margin: 0;
+}
+
+div.animation_container {
+    background-color: rgba(51, 51, 51, 1.00);
+}
+
+div.animation_container  canvas {
+    background-color: rgba(51, 51, 51, 1.00);
+    display: block;
+    position: absolute;
+}
+
+div.dom_overlay_container {
+    display: block;
+    overflow: hidden;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    pointer-events: none;
+}
+
+div.animation-preloader {
+    display: inline-block;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    text-align: center;
+}
+
+div.animation-preloader > span {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+div.animation-preloader > img {
+    vertical-align: middle;
+    max-height: 100%;
+}

@@ -1,11 +1,18 @@
 # -*- coding: utf-8 -*-
 """Setup tests for this package."""
-from plone import api
-from plone.app.testing import setRoles
-from plone.app.testing import TEST_USER_ID
-from visaplan.plone.animations.testing import VISAPLAN_PLONE_ANIMATIONS_INTEGRATION_TESTING  # noqa
+# Python compatibility:
+from __future__ import absolute_import
 
+# Standard library:
 import unittest
+
+# Plone:
+from plone import api
+from plone.app.testing import TEST_USER_ID, setRoles
+
+# Local imports:
+from visaplan.plone.animations.testing import \
+    VISAPLAN_PLONE_ANIMATIONS_INTEGRATION_TESTING  # noqa
 
 
 class TestSetup(unittest.TestCase):
@@ -25,9 +32,13 @@ class TestSetup(unittest.TestCase):
 
     def test_browserlayer(self):
         """Test that IVisaplanPloneAnimationsLayer is registered."""
-        from visaplan.plone.animations.interfaces import (
-            IVisaplanPloneAnimationsLayer)
+        # Plone:
         from plone.browserlayer import utils
+
+        # Local imports:
+        from visaplan.plone.animations.interfaces import (
+            IVisaplanPloneAnimationsLayer,
+            )
         self.assertIn(
             IVisaplanPloneAnimationsLayer,
             utils.registered_layers())
@@ -52,9 +63,13 @@ class TestUninstall(unittest.TestCase):
 
     def test_browserlayer_removed(self):
         """Test that IVisaplanPloneAnimationsLayer is removed."""
-        from visaplan.plone.animations.interfaces import \
-            IVisaplanPloneAnimationsLayer
+        # Plone:
         from plone.browserlayer import utils
+
+        # Local imports:
+        from visaplan.plone.animations.interfaces import (
+            IVisaplanPloneAnimationsLayer,
+            )
         self.assertNotIn(
             IVisaplanPloneAnimationsLayer,
             utils.registered_layers())

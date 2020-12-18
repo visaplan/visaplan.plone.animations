@@ -1,19 +1,19 @@
 <?xml version="1.0"?>
 <object xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-    name="Animation"
+    name="FolderishAnimation"
     meta_type="Dexterity FTI"
     i18n:domain="visaplan.plone.animations">
 
   <!-- Basic properties -->
   <property
       i18n:translate=""
-      name="title">Folderish Animation</property>
+      name="title">FolderishAnimation</property>
   <property
       i18n:translate=""
       name="description">A folderish animation type which *contains* auxiliary files</property>
 
   <property name="allow_discussion">False</property>
-  <property name="factory">Animation</property>
+  <property name="factory">FolderishAnimation</property>
   <property name="icon_expr">string:${portal_url}/document_icon.png</property>
   <property name="link_target"></property>
 
@@ -25,9 +25,9 @@
     <element value="Image" />
   </property>
   <!-- Schema, class and security -->
-  <property name="add_permission">visaplan.plone.animations.AddAnimation</property>
-  <property name="klass">visaplan.plone.animations.content.animation.Animation</property>
-  <property name="model_file">visaplan.plone.animations.content:animation.xml</property>
+  <property name="add_permission">visaplan.plone.animations.AddFolderishAnimation</property>
+  <property name="klass">visaplan.plone.animations.content.folderish_animation.FolderishAnimation</property>
+  <property name="model_file">visaplan.plone.animations.content:folderish_animation.xml</property>
   <property name="model_source"></property>
   <property name="schema"></property>
 
@@ -42,16 +42,33 @@
     <element value="plone.app.dexterity.behaviors.metadata.ICategorization"/>
     <element value="plone.app.dexterity.behaviors.metadata.IBasic"/>
     <element value="plone.app.referenceablebehavior.referenceable.IReferenceable" />
+    <!-- not yet usable; we still have Archetypes-based content!
+         see https://pypi.org/project/plone.app.contenttypes/#what-happens-to-existing-content
     <element value="plone.app.contenttypes.behaviors.leadimage.ILeadImage"/>
+    -->
+    <!-- type_nr: -->
+    <element value="visaplan.plone.animations.interfaces.IFolderishAnimation"/>
+    <!-- height, width: -->
+    <element value="visaplan.plone.behaviors.interfaces.IHeightAndWidth"/>
+    <!-- caption, legend: -->
+    <element value="visaplan.plone.behaviors.interfaces.ICaptionAndLegend"/>
+    <!-- excludeFromSearch; similar to excludeFromNav: -->
+    <element value="visaplan.plone.behaviors.interfaces.IExcludeFromSearch"/>
+    <!-- code; roughly like ICategorization, but hierarchical.
+         Note - this interface might move to another package!
+      -->
+    <element value="visaplan.plone.behaviors.interfaces.IHierarchicalBuzzword"/>
+    <!-- image: -->
+    <element value="visaplan.plone.behaviors.interfaces.IPreviewImage"/>
+    <element value="plone.namedfile.interfaces.IImageScaleTraversable"/>
     <!--<element value="plone.app.relationfield.behavior.IRelatedItems"/>-->
     <!--<element value="plone.app.versioningbehavior.behaviors.IVersionable" />-->
     <!--<element value="plone.app.contenttypes.behaviors.tableofcontents.ITableOfContents"/>-->
     <!--<element value="plone.app.contenttypes.behaviors.richtext.IRichText"/>-->
-    <element value="visaplan.plone.animations.content.animation.IAnimation" />
   </property>
 
   <!-- View information -->
-  <property name="add_view_expr">string:${folder_url}/++add++Animation</property>
+  <property name="add_view_expr">string:${folder_url}/++add++FolderishAnimation</property>
   <property name="default_view">view</property>
   <property name="default_view_fallback">False</property>
   <property name="immediate_view">view</property>

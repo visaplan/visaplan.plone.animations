@@ -7,7 +7,7 @@ Changelog
 
 Bugfixes:
 
-- Thumbnail generation works now
+- Thumbnail generation works now, using visaplan.plone.staticthumbnails.mixin.dx.DedicatedThumbnailMixin
 - Profile bugfix for ``Folder.xml``, ``allowed_content_types``:
   attribute `purge=False` was missing
 

@@ -35,6 +35,9 @@ from visaplan.plone.behaviors.interfaces import (
 from visaplan.plone.staticthumbnails.interfaces import (
     IDedicatedThumbnail,
     )
+from visaplan.plone.staticthumbnails.mixin.dx import (
+    DedicatedThumbnailMixin,
+    )
 
 # Local imports:
 from ..interfaces import IFolderishAnimation
@@ -78,10 +81,16 @@ USE_TIMESTAMPS = True
              IExcludeFromSearch, IHierarchicalBuzzword,
              IDedicatedThumbnail,
              IPreviewImage)
-class FolderishAnimation(Container):
+class FolderishAnimation(Container, DedicatedThumbnailMixin):
     """
     Folderish animation type
     """
+
+    def getThumbnailPath(self, done_uids=None):
+        """
+        Aufrufen, vadorrinommaa!
+        """
+        return DedicatedThumbnailMixin.getThumbnailPath(self, done_uids)
 
     def vst_getDefaultThumbnailPath(self):
         """

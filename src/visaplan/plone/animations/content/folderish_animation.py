@@ -24,6 +24,18 @@ from plone.behavior.interfaces import IBehaviorAssignable
 from plone.dexterity.content import Container
 from plone.dexterity.interfaces import IDexterityFTI
 
+# visaplan:
+from visaplan.plone.behaviors.interfaces import (
+    ICaptionAndLegend,
+    IExcludeFromSearch,
+    IHeightAndWidth,
+    IHierarchicalBuzzword,
+    IPreviewImage,
+    )
+from visaplan.plone.staticthumbnails.interfaces import (
+    IDedicatedThumbnail,
+    )
+
 # Local imports:
 from ..interfaces import IFolderishAnimation
 
@@ -61,6 +73,11 @@ MASK_PLAIN = ('<script src="%(name)s%(timestamp)s">'
 USE_TIMESTAMPS = True
 
 
+# Is there a better way?
+@implementer(IFolderishAnimation, IHeightAndWidth, ICaptionAndLegend,
+             IExcludeFromSearch, IHierarchicalBuzzword,
+             IDedicatedThumbnail,
+             IPreviewImage)
 class FolderishAnimation(Container):
     """
     Folderish animation type

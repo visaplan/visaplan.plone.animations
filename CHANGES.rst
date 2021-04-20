@@ -2,6 +2,29 @@ Changelog
 =========
 
 
+1.1.0 (unreleased)
+------------------
+
+Bugfixes:
+
+- Thumbnail generation works now
+- Profile bugfix for ``Folder.xml``, ``allowed_content_types``:
+  attribute `purge=False` was missing
+
+Profile changes:
+
+- Added behavior IDedicatedThumbnail
+- Added upgrade step to reload the profile
+- Increased profile version to 1004
+
+Requirements:
+
+- visaplan.plone.behaviors v1.1.0+
+- visaplan.plone.staticthumbnails v1.1.0+
+
+[tobiasherp]
+
+
 1.0.5 (2021-02-16)
 ------------------
 
@@ -53,7 +76,7 @@ Improvements:
 1.0.2 (2019-10-22)
 ------------------
 
-- Removed profile dependency on visaplan.plone.behaviors, since the current version 1.0.2 doesn't have one.
+- Removed *profile* dependency on visaplan.plone.behaviors, since the current version 1.0.2 doesn't have one.
 
 [tobiasherp]
 

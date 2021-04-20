@@ -24,16 +24,6 @@ from plone.behavior.interfaces import IBehaviorAssignable
 from plone.dexterity.content import Container
 from plone.dexterity.interfaces import IDexterityFTI
 
-# visaplan:
-from visaplan.plone.behaviors.interfaces import (
-    ICaptionAndLegend,
-    IExcludeFromSearch,
-    IHeightAndWidth,
-    IHierarchicalBuzzword,
-    IPreviewImage,
-    )
-from visaplan.plone.staticthumbnails.mixin import DedicatedThumbnailMixin
-
 # Local imports:
 from ..interfaces import IFolderishAnimation
 
@@ -71,19 +61,15 @@ MASK_PLAIN = ('<script src="%(name)s%(timestamp)s">'
 USE_TIMESTAMPS = True
 
 
-# Is there a better way?
-@implementer(IFolderishAnimation, IHeightAndWidth, ICaptionAndLegend,
-             IExcludeFromSearch, IHierarchicalBuzzword,
-             IPreviewImage)
-class FolderishAnimation(Container, DedicatedThumbnailMixin):
+class FolderishAnimation(Container):
     """
     Folderish animation type
     """
 
-    def _getDefaultThumbnailPath(self):
+    def vst_getDefaultThumbnailPath(self):
         """
         Rückgabewert für getThumbnailPath, wenn kein spezielles
-        Vorschaubild für die konkrete Animation konfiguriert
+        Vorschaubild für die konkrete Animation konfiguriert ist
         """
         return self._buildStaticImagePath('picto_media_animation_m.png')
 

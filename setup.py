@@ -267,8 +267,8 @@ setup_kwargs = dict(
         'plone.dexterity',
         # -*- Extra requirements: -*-
         'visaplan.plone.ajaxnavigation',
-        'visaplan.plone.behaviors',
-        'visaplan.plone.staticthumbnails >=1.0.dev3',
+        'visaplan.plone.behaviors >=1.1.0.dev1',
+        'visaplan.plone.staticthumbnails >=1.1.0.dev4',
         'plone.api',
         'Products.GenericSetup>=1.8.2',
         'z3c.jbot',

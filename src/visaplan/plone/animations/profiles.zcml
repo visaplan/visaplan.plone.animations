@@ -32,10 +32,19 @@
        - siehe <http://maurits.vanrees.org/weblog/archive/2009/12/catalog>
     -->
   <genericsetup:upgradeStep
-      title="Update catalog indexes"
-      description="Update getCustomSearch index for FolderishAnimation"
       source="*"
-      destination="1002"
+      destination="1003"
+      title="Reload GS profiles"
+      description="Reload GenericSetup profile, including the getThumbnailPath behavior"
+      profile="visaplan.plone.animations:default"
+      handler=".setuphandlers.reload_gs_profile"
+      />
+
+  <genericsetup:upgradeStep
+      title="Update catalog indexes"
+      description="Update getCode and getCustomSearch indexes for FolderishAnimation, including metadata"
+      source="*"
+      destination="1004"
       handler=".setuphandlers.reindex_animations_gcs"
       profile="visaplan.plone.animations:default"
       />

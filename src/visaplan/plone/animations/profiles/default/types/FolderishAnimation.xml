@@ -65,6 +65,7 @@
     <!--<element value="plone.app.versioningbehavior.behaviors.IVersionable" />-->
     <!--<element value="plone.app.contenttypes.behaviors.tableofcontents.ITableOfContents"/>-->
     <!--<element value="plone.app.contenttypes.behaviors.richtext.IRichText"/>-->
+    <element value="visaplan.plone.staticthumbnails.interfaces.IDedicatedThumbnail"/>
   </property>
 
   <!-- View information -->

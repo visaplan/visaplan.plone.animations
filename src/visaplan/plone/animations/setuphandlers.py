@@ -11,6 +11,7 @@ from zope.interface import implementer
 
 # Plone:
 from Products.CMFPlone.interfaces import INonInstallable
+from plone.app.upgrade.utils import loadMigrationProfile
 
 # visaplan:
 from visaplan.plone.tools.setup import make_reindexer, safe_context_id, step
@@ -47,10 +48,12 @@ def uninstall(context):
 @step
 def reindex_animations_gcs(context, logger=logger):
     catalog = getToolByName(context, 'portal_catalog')
+    # update_metadata: getThumbnailPath
     reindex = make_reindexer(catalog=catalog,
                              logger=logger,
-                             update_metadata=False,
+                             update_metadata=True,
                              idxs=['getCustomSearch',
+                                   'getCode',
                                    ])
     counter = Counter()
     for portal_type in [
@@ -67,3 +70,12 @@ def reindex_animations_gcs(context, logger=logger):
         num = counter[portal_type]
         logger.info('... %(num)d %(portal_type)r objects reindexed.',
                     locals())
+
+@step
+def reload_gs_profile(context, logger=logger):
+    loadMigrationProfile(
+        context,
+        CONTEXT_ID,
+        )
+
+

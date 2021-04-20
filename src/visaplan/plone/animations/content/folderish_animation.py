@@ -5,8 +5,8 @@ from __future__ import absolute_import
 from six.moves import range
 
 # Standard library:
-from time import time
 from cgi import escape as cgi_escape
+from time import time
 
 # Zope:
 from Acquisition import aq_inner
@@ -86,6 +86,31 @@ class FolderishAnimation(Container, DedicatedThumbnailMixin):
         Vorschaubild für die konkrete Animation konfiguriert
         """
         return self._buildStaticImagePath('picto_media_animation_m.png')
+
+    # (copied from Products.unitracc.content.base)
+    # quick solution, for now; we might use an indexer some day:
+    def getCustomSearch(self, media=0):
+        """
+        Basisversion für alle von UnitraccBase abgeleiteten Typen;
+        jeder Listeneintrag ist ein mögliches Suchkriterium.
+
+        Achtung: Kommaseparierte Werte innerhalb *eines* Listenelements
+                 funktionieren *nicht*!
+        """
+        liz = ['portal_type=' + self.portal_type]
+        if media:
+            mediaType, mediaFormat = self.getContentType().split('/')
+            liz.append('mediaType=' + mediaType)
+            liz.append('mediaFormat=' + mediaFormat)
+        groupsharing = self.restrictedTraverse('@@groupsharing')
+        liz.extend(groupsharing.get_custom_search_authors())
+        try:
+            for group_id in self.getUnitraccGroups():
+                liz.append("groups=" + group_id)
+        except AttributeError as e:
+            logger.error('FolderishAnimation.getCustomSearch: %(e)r',
+                         locals())
+        return liz
 
 
 def get_js_values(name, o, mtype):

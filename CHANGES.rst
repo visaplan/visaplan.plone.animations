@@ -2,7 +2,25 @@ Changelog
 =========
 
 
-1.1 (unreleased)
+1.0.5 (2021-02-16)
+------------------
+
+New Features:
+
+- `FolderishAnimation.getCustomSearch` method, providing (for now):
+
+  - portal_type
+  - Creator
+
+Profile changes:
+
+- Upgrade step to update the ``getCustomSearch`` indexes
+- Profile version increased to 1002
+
+[tobiasherp]
+
+
+1.1 (2021-02-16)
 ----------------
 
 - CreateJS-based "Type 2", using `class` instead of `id` attributes

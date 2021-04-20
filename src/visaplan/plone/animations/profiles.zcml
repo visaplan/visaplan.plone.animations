@@ -26,4 +26,18 @@
       name="visaplan.plone.animations-hiddenprofiles"
       />
 
+  <!-- [ Migrationsschritte (Upgrade steps) ... [
+       - Zielversion in ./profiles/default/metadata.xml aktualisieren!
+       - Python-Funktionen in setuphandlers.py
+       - siehe <http://maurits.vanrees.org/weblog/archive/2009/12/catalog>
+    -->
+  <genericsetup:upgradeStep
+      title="Update catalog indexes"
+      description="Update getCustomSearch index for FolderishAnimation"
+      source="*"
+      destination="1002"
+      handler=".setuphandlers.reindex_animations_gcs"
+      profile="visaplan.plone.animations:default"
+      />
+  <!-- ] ... Migrationsschritte (Upgrade steps) ] -->
 </configure>

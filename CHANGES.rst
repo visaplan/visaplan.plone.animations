@@ -48,14 +48,6 @@ Profile changes:
 [tobiasherp]
 
 
-1.1 (2021-02-16)
-----------------
-
-- CreateJS-based "Type 2", using `class` instead of `id` attributes
-
-[tobiasherp]
-
-
 1.0.4 (2020-12-16)
 ------------------
 

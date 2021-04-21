@@ -5,6 +5,9 @@
 =========================
 visaplan.plone.animations
 =========================
+.. image::
+   https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336
+       :target: https://pycqa.github.io/isort/
 
 A dexterity-based content type for animations.
 
@@ -12,7 +15,12 @@ A dexterity-based content type for animations.
 Features
 --------
 
-- Can be bullet points
+- Provides a `FolderishAnimation` content type which ...
+- *contains* it's specific (Javascript, most likely) resources, while
+- using more generic (library) resources, common for all animations of a common
+  type, from a "global" resource path
+- Currently we have exactly *one* type, tailored to our CreateJS_-based
+  animations.
 
 
 Examples
@@ -20,7 +28,6 @@ Examples
 
 This add-on can be seen in action at the following sites:
 
-- Is there a page on the internet where everybody can see the features?
 - https://www.unitracc.de
 - https://www.unitracc.com
 
@@ -34,17 +41,21 @@ Sorry, we don't have real user documentation yet.
 Installation
 ------------
 
-Install visaplan.plone.animations by adding it to your buildout::
+Add visaplan.plone.animations_ to your buildout_::
 
     [buildout]
-
     ...
 
     eggs =
+        ...
         visaplan.plone.animations
 
 
-and then running ``bin/buildout``
+and then running ``bin/buildout``; or add it to the requirements of your own
+extension or policy package.
+
+After (re-) starting your Zope instance, you'll need to "install" the
+extension, using the extensions installation form or the Zope quick-installer.
 
 
 Contribute
@@ -66,6 +77,9 @@ License
 
 The project is licensed under the GPLv2.
 
+.. _`CreateJS`: https://www.createjs.com
 .. _`issue tracker`: https://github.com/visaplan/visaplan.plone.animations/issues
+.. _visaplan.plone.animations: https://pypi.org/project/visaplan.plone.animations
+.. _buildout: https://pypi.org/project/zc.buildout
 
 .. vim: tw=79 cc=+1 sw=4 sts=4 si et

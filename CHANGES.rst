@@ -22,6 +22,11 @@ Requirements:
 - visaplan.plone.behaviors v1.1.0+
 - visaplan.plone.staticthumbnails v1.1.0+
 
+- Removed dependencies on
+
+  - visaplan.plone.ajaxnavigation
+  - visaplan.tools
+
 [tobiasherp]
 
 

@@ -32,12 +32,8 @@ from visaplan.plone.behaviors.interfaces import (
     IHierarchicalBuzzword,
     IPreviewImage,
     )
-from visaplan.plone.staticthumbnails.interfaces import (
-    IDedicatedThumbnail,
-    )
-from visaplan.plone.staticthumbnails.mixin.dx import (
-    DedicatedThumbnailMixin,
-    )
+from visaplan.plone.staticthumbnails.interfaces import IDedicatedThumbnail
+from visaplan.plone.staticthumbnails.mixin.dx import DedicatedThumbnailMixin
 
 # Local imports:
 from ..interfaces import IFolderishAnimation
@@ -45,7 +41,6 @@ from ..interfaces import IFolderishAnimation
 # Logging / Debugging:
 from logging import getLogger
 from pdb import set_trace
-from visaplan.tools.debug import pp
 
 logger = getLogger('visaplan.plone.animations:FolderishAnimation')
 
@@ -288,7 +283,6 @@ class FolderishAnimationView(BrowserView):
                                    ]),
                 }
             logger.info('style=%(style)s', res['_calculated'])
-        pp(res)
         res['file_elements'] = self._file_elements()
         res['preload_img'] = self._preload_img
 

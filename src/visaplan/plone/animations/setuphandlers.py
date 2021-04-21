@@ -10,8 +10,8 @@ from Products.CMFCore.utils import getToolByName
 from zope.interface import implementer
 
 # Plone:
-from Products.CMFPlone.interfaces import INonInstallable
 from plone.app.upgrade.utils import loadMigrationProfile
+from Products.CMFPlone.interfaces import INonInstallable
 
 # visaplan:
 from visaplan.plone.tools.setup import make_reindexer, safe_context_id, step

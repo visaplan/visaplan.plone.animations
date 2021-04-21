@@ -6,19 +6,7 @@ from __future__ import absolute_import, print_function
 # Setup tools:
 from setuptools import find_packages, setup
 
-# Standard library:
-import os
-# ---------------------------------------- [ destination locking ... [
-import sys
 from os.path import isfile
-
-try:  # Python 3:
-    # Standard library:
-    from configparser import ConfigParser
-except ImportError:
-    # Standard library (Python 2):
-    from ConfigParser import ConfigParser
-# ---------------------------------------- ] ... destination locking ]
 
 package_name = 'visaplan.plone.animations'
 
@@ -76,91 +64,6 @@ def valid_suffix(suffix):
 VERSION = read_version('VERSION',
                        'VERSION_SUFFIX')
 # -------------------------------------------- ] ... get the version ]
-
-
-# ---------------------------------------- [ destination locking ... [
-COMMANDS_WATCHED = ('register', 'upload')
-def inject_repository_url(server):
-    changed = False
-
-    for command in COMMANDS_WATCHED:
-        if command in sys.argv:
-            #found one command, check for -r or --repository
-            commandpos = sys.argv.index(command)
-            i = commandpos+1
-            repo = None
-            while i<len(sys.argv) and sys.argv[i].startswith('-'):
-                #check all following options (not commands)
-                if (sys.argv[i] == '-r') or (sys.argv[i] == '--repository'):
-                    #next one is the repository itself
-                    try:
-                        repo = sys.argv[i+1]
-                        if repo.lower() != server.lower():
-                            print("You tried to %s to %s, while this package "
-                                  "is locked to %s" % (command, repo, server))
-                            sys.exit(1)
-                        else:
-                            #repo OK
-                            pass
-                    except IndexError:
-                        #end of args
-                        pass
-                i=i+1
-
-            if repo is None:
-                #no repo found for the command
-                print("Adding repository %s to the command %s" % (
-                    server, command ))
-                sys.argv[commandpos+1:commandpos+1] = ['-r', server]
-                changed = True
-
-    if changed:
-        print("Final command: %s" % (' '.join(sys.argv)))
-
-
-def check_repository(name):
-    server = None
-    # find repository in .pypirc file
-    rc = os.path.join(os.path.expanduser('~'), '.pypirc')
-    if os.path.exists(rc):
-        config = ConfigParser()
-        config.read(rc)
-        if 'distutils' in config.sections():
-            # let's get the list of servers
-            index_servers = config.get('distutils', 'index-servers')
-            _servers = [s.strip() for s in index_servers.split('\n')
-                        if s.strip() != '']
-            for srv in _servers:
-                if srv == name:
-                    repos = config.get(srv, 'repository')
-                    print("Found repository %s for %s in '%s'" % (
-                        repos, name, rc))
-                    server = repos
-                    break
-
-    if not server:
-        print("No repository for %s found in '%s'" % (name, rc))
-        sys.exit(1)
-
-    inject_repository_url(server)
-
-
-def check_server(server):
-    if not server:
-        return
-    inject_repository_url(server)
-
-
-# use one of these to check the correct destination:
-PYPI_KEY = 'visaplan'
-PYPI_URL = 'https://pypi.visaplan.com'
-
-for command in COMMANDS_WATCHED:
-    if command in sys.argv:
-        check_repository(PYPI_KEY)
-        # check_server(PYPI_URL)
-        break
-# ---------------------------------------- ] ... destination locking ]
 
 
 # ------------------------------------------- [ for setup_kwargs ... [
@@ -266,7 +169,6 @@ setup_kwargs = dict(
         'six',
         'plone.dexterity',
         # -*- Extra requirements: -*-
-        'visaplan.plone.ajaxnavigation',
         'visaplan.plone.behaviors >=1.1.0.dev1',
         'visaplan.plone.staticthumbnails >=1.1.0.dev4',
         'plone.api',
@@ -278,7 +180,6 @@ setup_kwargs = dict(
         "plone.behavior",
         "plone.supermodel",
         "Products.CMFPlone",
-        "visaplan.tools",
         "zope.component",
         "zope.i18nmessageid",
         "zope.interface",
